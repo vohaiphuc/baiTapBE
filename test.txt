@@ -1,0 +1,97 @@
+INSERT INTO user(full_name, email, password) VALUES
+('Dustin Gutierrez', 'bester@outlook.com', '123456789'),
+('Hunter Trujillo', 'paley@yahoo.ca', '123456789'),
+('Britney White', 'stinson@live.com', '123456789'),
+('Giovanna Vargas', 'dkrishna@comcast.net', '123456789'),
+('Drake Yoder', 'intlprog@comcast.net', '123456789'),
+('Yaretzi Adkins', 'grady@hotmail.com', '123456789'),
+('Maya Norton', 'scarolan@optonline.net', '123456789'),
+('Preston Owens', 'speeves@hotmail.com', '123456789'),
+('Gina Huffman', 'gommix@comcast.net', '123456789'),
+('Alonso Hubbard', 'burniske@msn.com', '123456789'),
+('Pierce Herman', 'jshearer@att.net', '123456789'),
+('Marie Shelton', 'quantaman@yahoo.ca', '123456789')
+
+DELETE FROM user WHERE user_id=6
+
+UPDATE user
+	SET password='pass123'
+    WHERE user_id=1
+UPDATE user
+	SET password='securepass'
+    WHERE user_id=2
+UPDATE user
+	SET password='p@ssw0rd'
+    WHERE user_id=3
+UPDATE user
+	SET password='mysecret'
+    WHERE user_id=4
+UPDATE user
+	SET password='strongpassword'
+    WHERE user_id=5
+
+UPDATE user 
+SET
+    password=CASE
+        WHEN user_id=1 THEN 'pass123'
+        WHEN user_id=2 THEN 'securepass'
+        WHEN user_id=3 THEN 'p@ssw0rd'
+        WHEN user_id=4 THEN 'mysecret'
+        WHEN user_id=5 THEN 'strongpassword'
+        ELSE password
+    END
+
+WHERE user_id <= 5;
+
+SELECT * FROM user WHERE user_id >=5
+
+SELECT COUNT(*)
+
+
+-- Các thành phần trong 1 lệnh SQL
+
+STATEMENT | CLAUSE(s) | (OPERATOR) | FUNCTION
+STATEMENT: SELECT...FROM, CREATE, UPDATE...SET, INSERT...INTO, DELETE...FROM (xóa bảng: DROP TABLE)
+CLAUSE:
+    WHERE
+    LIMIT (in other database systems, instead of LIMIT, they might support TOP (sql server) or FETCH ROWNUM (oracle) )
+    JOIN...ON a = b
+        INNER JOIN: chỉ lấy a=b
+        LEFT JOIN: lấy hết table left, ráp table right với a=b vào table left
+        RIGHT JOIN: lấy hết table right, ráp table left với a=b vào table right
+KEYWORD:
+    ORDER BY
+    AS
+        đổi tên table hoặc column thành tên khác (Alias)
+        mysql không cần keyword as, 2 lệnh dưới đây cho ra same result:
+            SELECT * FROM user u WHERE u.user_id < 5
+            SELECT * FROM user AS u WHERE u.user_id < 5
+
+OPERATOR:
+    <, >, <=, >=, <> (!=)
+    AND, OR, NOT,
+    IN (value1, value2,...valueN)
+        Có thể dùng cùng 1 SELECT khác:
+            SELECT * FROM Customers WHERE CustomerID IN (SELECT CustomerID FROM Orders);
+            --> lấy Customers có Customers.CustomerID = Order.CustomerID
+    LIKE --> wildcards: %, _
+    BETWEEN a AND b
+        a, b: date, number, alphabet
+VALUE: IS NULL, IS NOT NULL
+FUNCTION:
+    MIN(column_name), MAX(column_name), COUNT(column_name), SUM(column_name), AVG(column_name)
+
+    
+
+
+
+
+SELECT * FROM user
+	LEFT JOIN orders ON user.user_id = orders.user_id
+	LEFT JOIN like_res ON user.user_id = like_res.user_id
+	LEFT JOIN rate_res ON user.user_id = rate_res.user_id
+	
+WHERE orders.user_id IS NULL
+AND like_res.user_id IS NULL
+AND rate_res.user_id IS NULL
+ 

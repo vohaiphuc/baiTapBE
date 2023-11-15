@@ -74,9 +74,55 @@ VALUES
         'p@ssw0rd'
     ),
     ('David Miller', 'david@example.com', 'mysecret'),
-    ('Eva Davis', 'eva@example.com', 'strongpassword');
-
-('Hai Phuc', 'haiphuc@example.com', 'nope');
+    ('Eva Davis', 'eva@example.com', 'strongpassword'),
+    (
+        'Dustin Gutierrez',
+        'bester@outlook.com',
+        '123456789'
+    ),
+    ('Hunter Trujillo', 'paley@yahoo.ca', '123456789'),
+    ('Britney White', 'stinson@live.com', '123456789'),
+    (
+        'Giovanna Vargas',
+        'dkrishna@comcast.net',
+        '123456789'
+    ),
+    (
+        'Drake Yoder',
+        'intlprog@comcast.net',
+        '123456789'
+    ),
+    (
+        'Yaretzi Adkins',
+        'grady@hotmail.com',
+        '123456789'
+    ),
+    (
+        'Maya Norton',
+        'scarolan@optonline.net',
+        '123456789'
+    ),
+    (
+        'Preston Owens',
+        'speeves@hotmail.com',
+        '123456789'
+    ),
+    (
+        'Gina Huffman',
+        'gommix@comcast.net',
+        '123456789'
+    ),
+    (
+        'Alonso Hubbard',
+        'burniske@msn.com',
+        '123456789'
+    ),
+    ('Pierce Herman', 'jshearer@att.net', '123456789'),
+    (
+        'Marie Shelton',
+        'quantaman@yahoo.ca',
+        '123456789'
+    );
 
 INSERT INTO
     food_type (type_name)
@@ -253,13 +299,13 @@ LIMIT
 
 -- Các user không like, không order, không rate
 SELECT
-    u.*
+    user.*
 FROM
-    user u
-    LEFT JOIN orders o ON u.user_id = o.user_id
-    LEFT JOIN like_res lr ON u.user_id = lr.user_id
-    LEFT JOIN rate_res rr ON u.user_id = rr.user_id
+    user
+    LEFT JOIN orders ON user.user_id = orders.user_id
+    LEFT JOIN like_res ON user.user_id = like_res.user_id
+    LEFT JOIN rate_res ON user.user_id = rate_res.user_id
 WHERE
-    o.user_id IS NULL
-    AND lr.user_id IS NULL
-    AND rr.user_id IS NULL;
+    orders.user_id IS NULL
+    AND like_res.user_id IS NULL
+    AND rate_res.user_id IS NULL
