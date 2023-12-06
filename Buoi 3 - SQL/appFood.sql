@@ -222,9 +222,9 @@ VALUES
     (2, 2, 1, 'DEF456', 'sub456'),
     (3, 3, 3, 'GHI789', 'sub789'),
     (4, 4, 2, 'JKL101', 'sub101'),
-    (5, 5, 1, 'MNO112', 'sub112');
+    (5, 5, 1, 'MNO112', 'sub112'),
+    (3, 2, 7, 'GHI790', 'sub78910');
 
-(3, 2, 7, 'GHI790', 'sub78910'),
 INSERT INTO
     rate_res (user_id, res_id, amount, date_rate)
 VALUES
