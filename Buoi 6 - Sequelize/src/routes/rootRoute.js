@@ -5,7 +5,6 @@ import userRoutes from "./userRoutes.js"
 
 const rootRoute = express.Router()
 
-rootRoute.use("/food", foodRoutes)
 rootRoute.use("/res", restaurantRoutes)
 rootRoute.use("/user", userRoutes)
 
